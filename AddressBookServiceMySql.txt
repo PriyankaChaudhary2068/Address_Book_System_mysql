@@ -19,3 +19,34 @@ mysql> Show databases;
 | performance_schema   |
 +----------------------+
 5 rows in set (0.00 sec)
+
+--------------------------------------------------------------------------
+UC2 -> Create a table with various fields in address book service database
+--------------------------------------------------------------------------
+
+mysql>  USE address_book_service;
+Database changed
+mysql>  CREATE TABLE address_book(firstName VARCHAR(20) NOT NULL,
+    -> lastName VARCHAR(20) NOT NULL,
+    -> address VARCHAR(150) NOT NULL,
+    ->  city VARCHAR(20) NOT NULL,
+    -> state VARCHAR(20) NOT NULL,
+    -> zip INT NOT NULL,
+    -> phone_Number INT NOT NULL,
+    ->  email_Id VARCHAR(30) NOT NULL);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql>  DESCRIBE address_book;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| firstName    | varchar(20)  | NO   |     | NULL    |       |
+| lastName     | varchar(20)  | NO   |     | NULL    |       |
+| address      | varchar(150) | NO   |     | NULL    |       |
+| city         | varchar(20)  | NO   |     | NULL    |       |
+| state        | varchar(20)  | NO   |     | NULL    |       |
+| zip          | int          | NO   |     | NULL    |       |
+| phone_Number | int          | NO   |     | NULL    |       |
+| email_Id     | varchar(30)  | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
