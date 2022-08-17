@@ -110,3 +110,24 @@ mysql> SELECT * FROM address_book;
 2 rows in set (0.00 sec)
 
 
+--------------------------------------------------------------------------
+UC6 -> Retrieve contact using city or state from a table of address book service database
+--------------------------------------------------------------------------
+
+mysql> SELECT * FROM address_book WHERE city = 'Alwar';
++-----------+----------+---------+-------+-----------+------+--------------+---------------+
+| firstName | lastName | address | city  | state     | zip  | phone_Number | email_Id      |
++-----------+----------+---------+-------+-----------+------+--------------+---------------+
+| Luv       | Sahu     | Alwar   | Alwar | Rajasthan | 9876 |     12345678 | luv@gmail.com |
++-----------+----------+---------+-------+-----------+------+--------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM address_book WHERE city = 'Alwar' or state = 'Rajasthan';
++-----------+----------+---------+-------+-----------+------+--------------+---------------+
+| firstName | lastName | address | city  | state     | zip  | phone_Number | email_Id      |
++-----------+----------+---------+-------+-----------+------+--------------+---------------+
+| Luv       | Sahu     | Alwar   | Alwar | Rajasthan | 9876 |     12345678 | luv@gmail.com |
++-----------+----------+---------+-------+-----------+------+--------------+---------------+
+1 row in set (0.00 sec)
+
+
