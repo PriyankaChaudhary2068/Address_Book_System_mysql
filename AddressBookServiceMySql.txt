@@ -168,6 +168,10 @@ mysql> SELECT COUNT(city) and COUNT(state) FROM address_book;
 1 row in set (0.00 sec)
 
 
+--------------------------------------------------------------------------
+UC8 -> Retrieve contact sorted alphabetically of table of address book service database
+--------------------------------------------------------------------------
+
 mysql> SELECT * FROM address_book;
 +-----------+----------+-------------+--------+-------------+------+--------------+------------------+
 | firstName | lastName | address     | city   | state       | zip  | phone_Number | email_Id         |
@@ -187,5 +191,88 @@ mysql> SELECT * FROM address_book ORDER BY firstName;
 | Shweta    | Thakur   | Muzaffarpur | Patna  | Bihar       | 1234 |     65432789 | shweta@gmail.com |
 +-----------+----------+-------------+--------+-------------+------+--------------+------------------+
 3 rows in set (0.00 sec)
+
+mysql> SELECT firstName,city FROM address_book ORDER BY city;
++-----------+--------+
+| firstName | city   |
++-----------+--------+
+| Luv       | Alwar  |
+| Annu      | Mumbai |
+| Shweta    | Patna  |
++-----------+--------+
+3 rows in set (0.00 sec)
+
+
+--------------------------------------------------------------------------
+UC9 -> Alter address book to add name and type
+--------------------------------------------------------------------------
+mysql>  ALTER TABLE address_book ADD bookName VARCHAR(20) NOT NULL ,ADD conatctType VARCHAR(30) NOT NULL;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>  SELECT * FROM address_book;
++-----------+----------+-------------+--------+-------------+------+--------------+------------------+----------+-------------+
+| firstName | lastName | address     | city   | state       | zip  | phone_Number | email_Id         | bookName | conatctType |
++-----------+----------+-------------+--------+-------------+------+--------------+------------------+----------+-------------+
+| Shweta    | Thakur   | Muzaffarpur | Patna  | Bihar       | 1234 |     65432789 | shweta@gmail.com |          |             |
+| Luv       | Sahu     | Alwar       | Alwar  | Rajasthan   | 9876 |     12345678 | luv@gmail.com    |          |             |
+| Annu      | Thakur   | Nerul       | Mumbai | Maharashtra | 1234 |     65432789 | annu@gmail.com   |          |             |
++-----------+----------+-------------+--------+-------------+------+--------------+------------------+----------+-------------+
+3 rows in set (0.00 sec)
+
+mysql>  DESCRIBE address_book;
++--------------+--------------+------+-----+---------+-------+
+| Field        | Type         | Null | Key | Default | Extra |
++--------------+--------------+------+-----+---------+-------+
+| firstName    | varchar(20)  | NO   |     | NULL    |       |
+| lastName     | varchar(20)  | NO   |     | NULL    |       |
+| address      | varchar(150) | NO   |     | NULL    |       |
+| city         | varchar(20)  | NO   |     | NULL    |       |
+| state        | varchar(20)  | NO   |     | NULL    |       |
+| zip          | int          | NO   |     | NULL    |       |
+| phone_Number | int          | NO   |     | NULL    |       |
+| email_Id     | varchar(30)  | NO   |     | NULL    |       |
+| bookName     | varchar(20)  | NO   |     | NULL    |       |
+| conatctType  | varchar(30)  | NO   |     | NULL    |       |
++--------------+--------------+------+-----+---------+-------+
+10 rows in set (0.00 sec)
+
+mysql>  ALTER TABLE address_book CHANGE conatctType contactType VARCHAR(30);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM address_book;
++-----------+----------+-------------+--------+-------------+------+--------------+------------------+----------+-------------+
+| firstName | lastName | address     | city   | state       | zip  | phone_Number | email_Id         | bookName | contactType |
++-----------+----------+-------------+--------+-------------+------+--------------+------------------+----------+-------------+
+| Shweta    | Thakur   | Muzaffarpur | Patna  | Bihar       | 1234 |     65432789 | shweta@gmail.com |          |             |
+| Luv       | Sahu     | Alwar       | Alwar  | Rajasthan   | 9876 |     12345678 | luv@gmail.com    |          |             |
+| Annu      | Thakur   | Nerul       | Mumbai | Maharashtra | 1234 |     65432789 | annu@gmail.com   |          |             |
++-----------+----------+-------------+--------+-------------+------+--------------+------------------+----------+-------------+
+3 rows in set (0.00 sec)
+
+mysql>  UPDATE address_book SET bookName = 'Strike',contactType = 'Professional' WHERE firstName = 'Shweta';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE address_book SET bookName = 'Hike',contactType = 'Family' WHERE firstName = 'Luv';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE address_book SET bookName = 'Sigce',contactType = 'Friend' WHERE firstName = 'Annu';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM address_book;
++-----------+----------+-------------+--------+-------------+------+--------------+------------------+----------+--------------+
+| firstName | lastName | address     | city   | state       | zip  | phone_Number | email_Id         | bookName | contactType  |
++-----------+----------+-------------+--------+-------------+------+--------------+------------------+----------+--------------+
+| Shweta    | Thakur   | Muzaffarpur | Patna  | Bihar       | 1234 |     65432789 | shweta@gmail.com | Strike   | Professional |
+| Luv       | Sahu     | Alwar       | Alwar  | Rajasthan   | 9876 |     12345678 | luv@gmail.com    | Hike     | Family       |
+| Annu      | Thakur   | Nerul       | Mumbai | Maharashtra | 1234 |     65432789 | annu@gmail.com   | Sigce    | Friend       |
++-----------+----------+-------------+--------+-------------+------+--------------+------------------+----------+--------------+
+3 rows in set (0.00 sec)
+
+
 
 
