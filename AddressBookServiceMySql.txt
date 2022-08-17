@@ -50,3 +50,25 @@ mysql>  DESCRIBE address_book;
 | email_Id     | varchar(30)  | NO   |     | NULL    |       |
 +--------------+--------------+------+-----+---------+-------+
 8 rows in set (0.01 sec)
+
+
+--------------------------------------------------------------------------
+UC3 -> Added contacts to table of address book service database
+--------------------------------------------------------------------------
+
+mysql>  INSERT INTO address_book(firstName,lastName,address,city,state,zip,phone_Number,email_Id)VALUES
+    -> ('Priyanka','Chaudhary','Sitamarhi','Patna','Bihar',45678,98765432,'priyanka@gmail.com'),
+    -> ('Shweta','Thakur','Muzaffarpur','Patna','Bihar',1234,65432789,'shweta@gmail.com'),
+    -> ('Luv','Sahu','Alwar','Alwar','Rajasthan',9876,12345678,'luv@gmail.com');
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM address_book;
++-----------+-----------+-------------+-------+-----------+-------+--------------+--------------------+
+| firstName | lastName  | address     | city  | state     | zip   | phone_Number | email_Id           |
++-----------+-----------+-------------+-------+-----------+-------+--------------+--------------------+
+| Priyanka  | Chaudhary | Sitamarhi   | Patna | Bihar     | 45678 |     98765432 | priyanka@gmail.com |
+| Shweta    | Thakur    | Muzaffarpur | Patna | Bihar     |  1234 |     65432789 | shweta@gmail.com   |
+| Luv       | Sahu      | Alwar       | Alwar | Rajasthan |  9876 |     12345678 | luv@gmail.com      |
++-----------+-----------+-------------+-------+-----------+-------+--------------+--------------------+
+3 rows in set (0.00 sec)
