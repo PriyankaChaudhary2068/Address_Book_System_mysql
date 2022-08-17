@@ -72,3 +72,22 @@ mysql> SELECT * FROM address_book;
 | Luv       | Sahu      | Alwar       | Alwar | Rajasthan |  9876 |     12345678 | luv@gmail.com      |
 +-----------+-----------+-------------+-------+-----------+-------+--------------+--------------------+
 3 rows in set (0.00 sec)
+
+
+--------------------------------------------------------------------------
+UC4 -> Edit contact in a table of address book service database
+--------------------------------------------------------------------------
+
+mysql> update address_book set city = 'Gaya' where firstName = 'Shweta';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  SELECT * FROM address_book;
++-----------+-----------+-------------+-------+-----------+-------+--------------+--------------------+
+| firstName | lastName  | address     | city  | state     | zip   | phone_Number | email_Id           |
++-----------+-----------+-------------+-------+-----------+-------+--------------+--------------------+
+| Priyanka  | Chaudhary | Sitamarhi   | Patna | Bihar     | 45678 |     98765432 | priyanka@gmail.com |
+| Shweta    | Thakur    | Muzaffarpur | Gaya  | Bihar     |  1234 |     65432789 | shweta@gmail.com   |
+| Luv       | Sahu      | Alwar       | Alwar | Rajasthan |  9876 |     12345678 | luv@gmail.com      |
++-----------+-----------+-------------+-------+-----------+-------+--------------+--------------------+
+3 rows in set (0.00 sec)
